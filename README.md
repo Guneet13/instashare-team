@@ -1,2 +1,2 @@
 # instashare-team
-A Instagram inspired web app. 
+A Instagram inspired web app.

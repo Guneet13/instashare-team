@@ -4,16 +4,30 @@
   "description": "a social-network inspired by instagram",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DxSnow/instashare-team.git"
   },
-  "author": "Snow,Guneet,James",
+  "author": "Snow, Guneet, James",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DxSnow/instashare-team/issues"
   },
-  "homepage": "https://github.com/DxSnow/instashare-team#readme"
+  "homepage": "https://github.com/DxSnow/instashare-team#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.11",
+    "passport": "^0.5.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
 }
