@@ -1,15 +1,24 @@
-const express = require('express');// importing the library
+// importing the library
+const express = require('express');
+// referring to the instance of express with name app
+const app = express(); 
 const db = require('./config/keys');
 const mongoose = require('mongoose');
-const app = express(); // referring to the instance of express with name app
+const users = require('./routs/api/users');
+const users = require('./routs/api/profile');
+const users = require('./routs/api/posts');
+
 
 //Let's write our first route
 app.get('/', (req, res) => res.send('Hello server'));
 
 //Connect to db
 mongoose.connect(db.mongoURI)
-          .then(() => console.log('MongoDB connected')) //promise statement
-          .catch((err) => console.log(err) ); //promise statement
+          .then(() => console.log('MongoDB connected')) 
+          //promise statement
+
+          .catch((err) => console.log(err) ); 
+          //promise statement
 
 
 const port = 5000;
