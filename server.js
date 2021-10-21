@@ -5,8 +5,8 @@ const app = express();
 const db = require('./config/keys');
 const mongoose = require('mongoose');
 const users = require('./routs/api/users');
-const users = require('./routs/api/profile');
-const users = require('./routs/api/posts');
+const profile = require('./routs/api/profile');
+const posts = require('./routs/api/posts');
 
 
 //Let's write our first route
