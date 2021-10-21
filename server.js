@@ -9,6 +9,8 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
 
+
+
 //Let's write our first route
 app.get('/', (req, res) => res.send('Hello server'));
 
