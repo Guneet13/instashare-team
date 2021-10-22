@@ -11,7 +11,7 @@ const posts = require('./routes/api/posts');
 // @route GET
 // @desc main webpage
 // @access Public
-app.post('/', (req, res) => res.send('Hello server'));
+app.get('/', (req, res) => res.send('Hello server'));
 
 //if this path is called, to go this js --> calling to express to create routes to each folder
 app.use('/api/users', users);
