@@ -9,9 +9,9 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
 
-
-
-//Let's write our first route
+// @route GET
+// @desc main webpage
+// @access Public
 app.get('/', (req, res) => res.send('Hello server'));
 
 //if this path is called, to go this js --> calling to express to create routes to each folder
@@ -21,12 +21,9 @@ app.use('/api/posts', posts);
 
 //Connect to db
 mongoose.connect(db.mongoURI)
-          .then(() => console.log('MongoDB connected')) 
-          //promise statement
-
+          .then(() => console.log('MongoDB connected'))
           .catch((err) => console.log(err) ); 
           //promise statement
-
-
+ 
 const port = 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
