@@ -1,9 +1,42 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const User = require("../../models/User");
+
 
 // @route POST /api/users/register
 // @desc Register a user
 // @access Public
-router.get('/register', (req,res) => res.json({msg: 'users work!'}));
+router.post('/register', (req, res) => {
+  User.findOne({ email: req.body.email })
+    .then(user => {
+      if (user) {
+        return res.json({ email: "Email already exists" });
+      } else {
+        const newUser = new User({
+          name: req.body.name,
+          email: req.body.email,
+          password: req.body.password
+        }) // end of newUser registration
 
-module.exports = router; 
+        //hash password
+        bcrypt.genSalt(10, (err, salt) => {
+          if (err) throw err;
+          bcrypt.hash(req.body.password, salt, (err, hash) => {
+            if (err) throw err;
+            newUser.password = hash;
+            newUser.save()
+              .then(user => res.json(user))
+              .catch(err => console.log(err));
+          }
+          );// end of bcrypt.hash
+        }//end of genSalt call back
+        );
+      } // end of else
+    })  //end of findOne.then
+    .catch(err => console.log(err)) //end of findOne.catch
+} // end of (req,res)
+)// end of router.post
+
+
+module.exports = router;

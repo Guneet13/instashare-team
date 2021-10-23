@@ -8,6 +8,9 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
+// For any route, transform user's input to unicode, then to json format.
+app.use(express.urlencoded());
+app.use(express.json());
 
 // @route GET
 // @desc main webpage
@@ -21,9 +24,9 @@ app.use('/api/posts', posts);
 
 //Connect to db
 mongoose.connect(db.mongoURI)
-          .then(() => console.log('MongoDB connected'))
-          .catch((err) => console.log(err) );
-          //promise statement
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log(err));
+//promise statement
 
 const port = 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
