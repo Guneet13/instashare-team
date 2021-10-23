@@ -8,8 +8,9 @@ const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 
-// For any route, transform user's input to unicode, then to json format.
+// For any route, transform user's input to unicode.
 app.use(express.urlencoded());
+//then  transform http to json 
 app.use(express.json());
 
 // @route GET
