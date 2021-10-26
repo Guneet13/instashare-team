@@ -19,11 +19,12 @@ router.post('/register', (req, res) => {
           r:'pg',
           d:'mm'
         });
-        
+
         const newUser = new User({
           name: req.body.name,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          avatar
         }) // end of newUser registration
 
         //hash password
