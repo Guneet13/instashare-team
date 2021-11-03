@@ -18,7 +18,7 @@ router.post('/register', (req, res) => {
           s:'200',
           r:'pg',
           d:'mm'
-        });
+        }); 
 
         const newUser = new User({
           name: req.body.name,
@@ -46,5 +46,27 @@ router.post('/register', (req, res) => {
 } // end of (req,res)
 )// end of router.post
 
+
+// @route POST /api/users/login
+// @desc Login a user
+// @access Public
+router.post('/login', (req, res) => {
+  User.findOne({email: req.body.email})
+  .then(user => {
+    //check if user exists
+    if(!user){ // if user not found
+      return res.status(400).json({email: 'User not found!'})
+    }
+    //check the password
+    bcrypt.compare(req.body.password, user.password)
+      .then(isMatch => {
+        if(!isMatch){
+          return res.status(400).json({password: 'Password incorrect'});
+        }else{
+          return res.json({msg: 'Success'});
+        }
+      })
+  })
+})
 
 module.exports = router;
