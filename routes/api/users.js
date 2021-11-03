@@ -5,6 +5,7 @@ const User = require("../../models/User");
 const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken'); // generate token
 const Keys = require('../../config/keys');
+const passport = require('passport');
 
 // @route POST /api/users/register
 // @desc Register a user
@@ -20,7 +21,7 @@ router.post('/register', (req, res) => {
           s:'200',
           r:'pg',
           d:'mm'
-        }); 
+        });
 
         const newUser = new User({
           name: req.body.name,
@@ -72,7 +73,7 @@ router.post('/login', (req, res) => {
             avatar: user.avatar
           };
           jwt.sign(
-            payload , 
+            payload ,
             Keys.secretOrKey,
             {expiresIn: 3600},//3600seconds is 1 hour
             (err, token) => {
@@ -82,5 +83,17 @@ router.post('/login', (req, res) => {
       })
   })
 })
+
+// @route   GET /api/users/current
+// @desc    Return current user info
+// @access  Private
+router.get(
+  '/current',
+  passport.authenticate('jwt', {session: false}),
+  (req, res) => {
+    res.json(req.user);
+});
+
+
 
 module.exports = router;

@@ -7,11 +7,18 @@ const mongoose = require('mongoose');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+const passport = require('passport');
 
 // For any route, transform user's input to unicode.
 app.use(express.urlencoded());
-//then  transform http to json 
+//then  transform http to json
 app.use(express.json());
+
+
+//Passport configuration
+app.use(passport.initialize());
+require('./config/passport')(passport);
+
 
 // @route GET
 // @desc main webpage
