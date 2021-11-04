@@ -77,7 +77,7 @@ router.post('/login', (req, res) => {
             Keys.secretOrKey,
             {expiresIn: 3600},//3600seconds is 1 hour
             (err, token) => {
-              return res.json({token: 'Bearer'+token})
+              return res.json({token: 'Bearer '+token})
             });
         }
       })
