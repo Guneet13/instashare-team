@@ -6,11 +6,22 @@ const gravatar = require('gravatar');
 const jwt = require('jsonwebtoken'); // generate token
 const Keys = require('../../config/keys');
 const passport = require('passport');
+const validateRegisterInput = require('../../validation/register');
 
 // @route POST /api/users/register
 // @desc Register a user
 // @access Public
 router.post('/register', (req, res) => {
+
+  //validate user's input
+  const result = validateRegisterInput(req.body);
+  console.log(result);
+  if (!result.isValid){
+    //meaning there are error
+    return res.status(400).json(result.errors);
+  }
+
+
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
