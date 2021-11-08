@@ -23,7 +23,7 @@ module.exports = function (data){
     if(isEmpty(data.password)){
         errors.password = 'password field is required';
     }else if(!Validator.isLength(data.password, {min:8, Max:30})){
-        errors.email = 'Password must be between 8 and 30 characters';
+        errors.password = 'Password must be between 8 and 30 characters';
     }
 
     //check confirmed password
