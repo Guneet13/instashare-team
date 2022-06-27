@@ -1,5 +1,5 @@
 # instashare-team
-A Instagram inspired web app.
+An Instagram inspired web app.  https://instashare-app.herokuapp.com/
 
 Here is the demo youtube link: https://youtu.be/Vc9Fe6pnYjo
 
